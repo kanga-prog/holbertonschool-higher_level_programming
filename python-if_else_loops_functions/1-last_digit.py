@@ -2,17 +2,17 @@
 import random
 number = random.randint(-10000, 10000)
 
-if (number < 0):
-    print('Last digit of {:d} '
-          'is {:d} and is less than 6 and not 0'
-          .format(number, (-number % 10)))
+# Get the last digit of the number (absolute value of the number modulo 10)
+last_digit = abs(number) % 10
 
-elif number % 10 > 5:
-    print('Last digit of {:d} '
-          'is {:d} and is greater than 5'.format(number, number % 10))
-elif number % 10 == 0:
-    print('Last digit of {:d} '
-          'is 0 and is 0'.format(number))
+# Print the initial message
+print(f"Last digit of {number} is {last_digit}", end=" ")
+
+# Check the value of the last digit and print the appropriate message
+if last_digit > 5:
+    print("and is greater than 5")
+elif last_digit == 0:
+    print("and is 0")
 else:
-    print('Last digit of {:d} '
-          'is {:d} and is less than 6 and not 0'.format(number, number % 10))
+    print("and is less than 6 and not 0")
+
