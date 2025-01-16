@@ -1,5 +1,6 @@
 #!/usr/bin/python3
 import random
+
 number = random.randint(-10000, 10000)
 
 # Get the last digit of the number (absolute value of the number modulo 10)
