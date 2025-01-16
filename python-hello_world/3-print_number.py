@@ -1,5 +1,3 @@
 #!/usr/bin/python3
-numero = 98
-
-
-print(f"{numero} Battery street")
+number = 98
+print("{:d} Battery street".format(number))
