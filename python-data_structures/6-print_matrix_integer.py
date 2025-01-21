@@ -1,7 +1,10 @@
 #!/usr/bin/python3
 
 def print_matrix_integer(matrix=[[]]):
-    for row in matrix:
-        for i in row:
-            print("{:d}".format(i), end=" ")
-        print()  # Pour aller à la ligne suivante après chaque ligne de la matrice
+    lenght = len(matrix)
+    for x in range(lenght):
+        for y in range(len(matrix[x])):
+            print('{:d}'.format(matrix[x][y]), end='')
+            if y is not (len(matrix[x]) - 1):
+                print(end=" ")
+        print("")
