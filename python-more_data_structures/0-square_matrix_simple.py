@@ -1,6 +1,10 @@
 #!/usr/bin/python3
 
+# Définition d'une fonction pour calculer le carré
+def carre(x):
+    return x**2
+
 def square_matrix_simple(matrix=[]):
-    # Créer une copie de la matrice pour éviter de modifier l'originale
-    new_matrix = [list(map(lambda x: x**2, row)) for row in matrix]
+    # Utilisation de la fonction 'carre' à la place de 'lambda'
+    new_matrix = [list(map(carre, row)) for row in matrix]
     return new_matrix
