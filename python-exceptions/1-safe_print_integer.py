@@ -2,8 +2,7 @@
 
 def safe_print_integer(value):
     try:
-        # Essayer de convertir la valeur en entier
-        print("{:d}".format(int(value)))
+        print("{:d}".format(value))
         return True
     except (ValueError, TypeError):
         return False
