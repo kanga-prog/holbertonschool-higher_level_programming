@@ -8,7 +8,9 @@ def list_division(my_list_1, my_list_2, list_length):
                 print("out of range")
                 result.append(0)
             else:
-                if isinstance(my_list_1[i], (int, float)) and isinstance(my_list_2[i], (int, float)):
+                if isinstance(my_list_1[i], (int, float)) and isinstance(
+                    my_list_2[i], (int, float)
+                ):
                     try:
                         result.append(my_list_1[i] / my_list_2[i])
                     except ZeroDivisionError:
@@ -21,7 +23,5 @@ def list_division(my_list_1, my_list_2, list_length):
             print("out of range")
             result.append(0)
         finally:
-            # This ensures that, regardless of the error, an element is appended
-            # (could be a 0 due to error handling).
             continue
     return result
