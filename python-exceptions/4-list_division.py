@@ -1,5 +1,3 @@
-#!/usr/bin/pyhon3
-
 def list_division(my_list_1, my_list_2, list_length):
     result = []
     for i in range(list_length):
@@ -20,4 +18,8 @@ def list_division(my_list_1, my_list_2, list_length):
         except IndexError:
             print("out of range")
             result.append(0)
+        finally:
+            # This ensures that, regardless of the error, an element is appended
+            # (could be a 0 due to error handling).
+            continue
     return result
