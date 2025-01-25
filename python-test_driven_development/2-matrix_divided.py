@@ -16,8 +16,14 @@ def matrix_divided(matrix, div):
     # Validate divisor: check if divisor is not zero
     if div == 0:
         raise ZeroDivisionError("division by zero")
+    
     # Create the new matrix with elements divided by div
     new_matrix = []
     for row in matrix:
         new_matrix.append([round(element / div, 2) for element in row])
+    
+    # Print the new matrix as required
+    print(new_matrix)  # Print the new matrix
+    print(matrix)  # Print the original matrix
+    
     return new_matrix
