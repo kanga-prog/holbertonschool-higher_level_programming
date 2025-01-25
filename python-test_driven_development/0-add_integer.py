@@ -1,5 +1,4 @@
 #!/usr/bin/python3
-
 """
 Module qui contient la fonction add_integer.
 Cette fonction additionne deux nombres entiers et retourne le résultat.
@@ -7,7 +6,6 @@ Si les entrées sont des flottants, elles sont converties en entiers.
 Si une entrée n'est pas un entier ou un flottant, une exception est levée.
 """
 
-import math
 
 def add_integer(a, b=98):
     """
@@ -32,12 +30,12 @@ def add_integer(a, b=98):
     if type(b) not in [int, float]:
         raise TypeError("b must be an integer")
 
-    # Vérification pour NaN
-    if math.isnan(a) or math.isnan(b):
+    # Vérification pour NaN : a != a est vrai uniquement si a est NaN
+    if a != a or b != b:
         raise ValueError("cannot convert float NaN to integer")
 
-    # Vérification pour infini
-    if math.isinf(a) or math.isinf(b):
+    # Vérification pour infini : seuil arbitraire pour valeurs infinies
+    if a > 1e308 or b > 1e308 or a < -1e308 or b < -1e308:
         raise ValueError("cannot convert float inf to integer")
 
     # Conversion en entiers si les entrées sont des flottants
