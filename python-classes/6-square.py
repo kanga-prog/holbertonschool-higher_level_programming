@@ -1,29 +1,28 @@
 #!/usr/bin/python3
 
-""" ce module traite d'un cerré """
+""" ce module traite d'un carré """
 
 
 class Square:
-
     """
     Cette classe définit un carré par la taille de son côté et sa position.
 
     Attributes:
-        __size (int): La taille du côté du carré\
-                (doit être un entier supérieur ou égal à 0).
-        __position (tuple): Position du carré dans\
-                la console (doit être un tuple de 2 entiers positifs).
+        __size (int): La taille du côté du carré (doit être un entier\
+                supérieur ou égal à 0).
+        __position (tuple): Position du carré dans la console (doit être\
+                un tuple de 2 entiers positifs).
     """
 
     def __init__(self, size=0, position=(0, 0)):
         """
-        Initialise une instance de la classe Square avec une taille\
-                et une position données.
+        Initialise une instance de la classe Square avec une taille et une\
+                position données.
 
         Args:
             size (int): La taille du côté du carré. Par défaut, c'est 0.
-            position (tuple): La position du carré dans\
-                    la console, donnée sous forme de tuple (x, y).
+            position (tuple): La position du carré dans la console,\
+                    donnée sous forme de tuple (x, y).
                               Par défaut, c'est (0, 0).
         """
         self.size = size
@@ -73,17 +72,16 @@ class Square:
         Définit la position du carré.
 
         Args:
-            value (tuple): Un tuple (x, y) représentant\
-                    la position du carré dans la console.
+            value (tuple): Un tuple (x, y) représentant la position\
+                    du carré dans la console.
 
         Raises:
             TypeError: Si 'value' n'est pas un tuple de 2 entiers positifs.
         """
         if (not isinstance(value, tuple) or len(value) != 2 or
-            not all(isinstance(i, int) for i in value) or
-            not all(i >= 0 for i in value)):
-            raise TypeError("position must be a tuple\
-                    of 2 positive integers")
+                not all(isinstance(i, int) for i in value) or
+                not all(i >= 0 for i in value)):
+            raise TypeError("position must be a tuple of 2 positive integers")
         self.__position = value
 
     def area(self):
@@ -97,15 +95,15 @@ class Square:
 
     def my_print(self):
         """
-        Affiche le carré en utilisant le caractère '#' dans stdout\
-                avec la position spécifiée.
+        Affiche le carré en utilisant le caractère '#' dans stdout avec la\
+                position spécifiée.
 
         Si la taille est 0, affiche une ligne vide.
 
         Si position[1] > 0, les lignes de carrés sont précédées de\
                 position[1] espaces.
-        Si position[0] > 0, chaque ligne commence avec position[0]\
-                espaces avant les '#'.
+        Si position[0] > 0, chaque ligne commence avec\
+                position[0] espaces avant les '#'.
         """
         if self.__size == 0:
             print("")
