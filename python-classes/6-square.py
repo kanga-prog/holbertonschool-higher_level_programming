@@ -2,26 +2,30 @@
 
 """ ce mode decrit les carasteristique d'un carré """
 
+
 class Square:
     """
     Cette classe définit un carré par la taille de son côté et sa position.
-    
     Attributes:
-        __size (int): La taille du côté du carré (doit être un entier supérieur ou égal à 0).
-        __position (tuple): Position du carré dans la console (doit être un tuple de 2 entiers positifs).
+        __size (int): La taille du côté du carré\
+                (doit être un entier supérieur ou égal à 0).
+        __position (tuple): Position du carré dans\
+                la console (doit être un tuple de 2 entiers positifs).
     """
 
     def __init__(self, size=0, position=(0, 0)):
         """
-        Initialise une instance de la classe Square avec une taille et une position données.
+        Initialise une instance de la classe Square\
+                avec une taille et une position données.
 
         Args:
             size (int): La taille du côté du carré. Par défaut, c'est 0.
-            position (tuple): La position du carré dans la console, donnée sous forme de tuple (x, y).
+            position (tuple): La position du carré dans\
+                    la console, donnée sous forme de tuple (x, y).
                               Par défaut, c'est (0, 0).
         """
         self.size = size  # Utilisation du setter pour initialiser 'size'
-        self.position = position  # Utilisation du setter pour initialiser 'position'
+        self.position = position
 
     @property
     def size(self):
@@ -67,7 +71,8 @@ class Square:
         Définit la position du carré.
 
         Args:
-            value (tuple): Un tuple (x, y) représentant la position du carré dans la console.
+            value (tuple): Un tuple (x, y) représentant\
+                    la position du carré dans la console.
 
         Raises:
             TypeError: Si 'value' n'est pas un tuple de 2 entiers positifs.
@@ -89,17 +94,20 @@ class Square:
 
     def my_print(self):
         """
-        Affiche le carré en utilisant le caractère '#' dans stdout avec la position spécifiée.
+        Affiche le carré en utilisant le caractère\
+                '#' dans stdout avec la position spécifiée.
 
         Si la taille est 0, affiche une ligne vide.
 
-        Si position[1] > 0, les lignes de carrés sont précédées de position[1] espaces.
-        Si position[0] > 0, chaque ligne commence avec position[0] espaces avant les '#'.
+        Si position[1] > 0, les lignes de carrés\
+                sont précédées de position[1] espaces.
+        Si position[0] > 0, chaque ligne commence\
+                avec position[0] espaces avant les '#'.
         """
         if self.__size == 0:
             print("")
         else:
-            for y in range(self.__position[1]):  # Affiche des lignes vides pour la position verticale
+            for y in range(self.__position[1]):
                 print("")
             for i in range(self.__size):
                 print(" " * self.__position[0] + "#" * self.__size)
