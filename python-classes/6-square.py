@@ -1,11 +1,13 @@
 #!/usr/bin/python3
 
-""" ce mode decrit les carasteristique d'un carré """
+""" ce module traite d'un cerré """
 
 
 class Square:
+
     """
     Cette classe définit un carré par la taille de son côté et sa position.
+
     Attributes:
         __size (int): La taille du côté du carré\
                 (doit être un entier supérieur ou égal à 0).
@@ -15,8 +17,8 @@ class Square:
 
     def __init__(self, size=0, position=(0, 0)):
         """
-        Initialise une instance de la classe Square\
-                avec une taille et une position données.
+        Initialise une instance de la classe Square avec une taille\
+                et une position données.
 
         Args:
             size (int): La taille du côté du carré. Par défaut, c'est 0.
@@ -24,7 +26,7 @@ class Square:
                     la console, donnée sous forme de tuple (x, y).
                               Par défaut, c'est (0, 0).
         """
-        self.size = size  # Utilisation du setter pour initialiser 'size'
+        self.size = size
         self.position = position
 
     @property
@@ -80,7 +82,8 @@ class Square:
         if (not isinstance(value, tuple) or len(value) != 2 or
             not all(isinstance(i, int) for i in value) or
             not all(i >= 0 for i in value)):
-            raise TypeError("position must be a tuple of 2 positive integers")
+            raise TypeError("position must be a tuple\
+                    of 2 positive integers")
         self.__position = value
 
     def area(self):
@@ -94,15 +97,15 @@ class Square:
 
     def my_print(self):
         """
-        Affiche le carré en utilisant le caractère\
-                '#' dans stdout avec la position spécifiée.
+        Affiche le carré en utilisant le caractère '#' dans stdout\
+                avec la position spécifiée.
 
         Si la taille est 0, affiche une ligne vide.
 
-        Si position[1] > 0, les lignes de carrés\
-                sont précédées de position[1] espaces.
-        Si position[0] > 0, chaque ligne commence\
-                avec position[0] espaces avant les '#'.
+        Si position[1] > 0, les lignes de carrés sont précédées de\
+                position[1] espaces.
+        Si position[0] > 0, chaque ligne commence avec position[0]\
+                espaces avant les '#'.
         """
         if self.__size == 0:
             print("")
