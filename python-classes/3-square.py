@@ -7,6 +7,7 @@ This module defines a Square class with a private instance attribute
 ensure that the `size` is an integer greater than or equal to 0.
 """
 
+
 class Square:
     """Represents a square with a given size.
 
@@ -41,4 +42,3 @@ class Square:
             int: The area of the square (size * size).
         """
         return self.__size * self.__size
-
