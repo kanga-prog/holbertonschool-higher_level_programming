@@ -7,12 +7,15 @@ It includes an initialization method that accepts a side length
 and ensures the value is a non-negative integer.
 """
 
+
 class Square:
+
     """
     Représente un carré.
 
     Attributes:
-        size (int): La taille du côté du carré (doit être un entier supérieur ou égal à 0).
+        size (int): La taille du côté du carré\
+             (doit être un entier supérieur ou égal à 0).
 
     Methods:
         __init__(self, size=0): Initialise un carré avec une taille donnée.
@@ -23,7 +26,8 @@ class Square:
         Initialise une instance de la classe Square.
 
         Args:
-            size (int): La taille du côté du carré. Doit être un entier et supérieur ou égal à 0.
+            size (int): La taille du côté du carré.\
+                 Doit être un entier et supérieur ou égal à 0.
 
         Raises:
             TypeError: Si size n'est pas un entier.
@@ -34,4 +38,3 @@ class Square:
         if size < 0:
             raise ValueError("size must be >= 0")
         self.__size = size
-
