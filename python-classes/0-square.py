@@ -1,6 +1,10 @@
 #!/usr/bin/python3
 
-# 0-square.py
+"""
+This module defines a Square class that represents a square.
+
+"""
+
 
 class Square:
     pass
