@@ -1,7 +1,13 @@
 #!/usr/bin/python3
 
+""" ce module trite d'un rectangle """
+
 
 class Rectangle:
+
+    """
+    creation de la classe rectangle
+    """
     def __init__(self, width=0, height=0):
         self.width = width
         self.height = height
