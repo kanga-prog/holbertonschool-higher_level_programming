@@ -1,7 +1,10 @@
 #!/usr/bin/python3
 
+""" module traitant d'un rectangle """
+
 
 class Rectangle:
+
     """
     A class representing a rectangle.
     """
