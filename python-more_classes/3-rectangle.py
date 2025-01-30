@@ -109,7 +109,7 @@ class Rectangle:
             return ""
         return '\n'.join(['#' * self.__width] * self.__height)
 
-    def __str__(self):
+    def __repr__(self):
         """
         Returns a string representation of the rectangle for recreating it.
 
@@ -117,4 +117,4 @@ class Rectangle:
             str: A string that could be used with `eval()` to recreate\
                     the object.
         """
-        return f"Rectangle({self.__width}, {self.__height})"
+        return (f"Rectangle({self.__width}, {self.__height})")
