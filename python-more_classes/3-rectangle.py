@@ -21,7 +21,7 @@ class Rectangle:
     def __init__(self, width=0, height=0):
         """
         Initializes the rectangle with optional width and height.
-        
+
         Args:
             width (int): The width of the rectangle (default is 0).
             height (int): The height of the rectangle (default is 0).
