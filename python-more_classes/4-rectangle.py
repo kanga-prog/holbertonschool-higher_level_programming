@@ -2,6 +2,7 @@
 
 """ ce module traite d'un rectangle """
 
+
 class Rectangle:
     """
     A class to represent a rectangle.
@@ -14,13 +15,14 @@ class Rectangle:
         area(): Returns the area of the rectangle.
         perimeter(): Returns the perimeter of the rectangle.
         __str__(): Returns a string representation of the rectangle.
-        __repr__(): Returns a string with a representation of the object to recreate it.
+        __repr__(): Returns a string with a representation\
+                of the object to recreate it.
     """
 
     def __init__(self, width=0, height=0):
         """
         Initializes the rectangle with optional width and height.
-        
+
         Args:
             width (int): The width of the rectangle (default is 0).
             height (int): The height of the rectangle (default is 0).
@@ -116,4 +118,3 @@ class Rectangle:
             str: A string that represents the object, e.g., Rectangle(2, 4)
         """
         return f"Rectangle({self._width}, {self._height})"
-
