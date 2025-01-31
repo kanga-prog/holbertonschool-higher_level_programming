@@ -115,5 +115,4 @@ class Rectangle:
         Returns:
             str: A string representing the object with its memory address.
         """
-        return ("<3-Rectangle.{} object at {:#x}>"
-            .format(self.__class__.__name__, id(self)))
+        return ("<3-Rectangle.{} object at {:#x}>".format(self.__class__.__name__, id(self)))
