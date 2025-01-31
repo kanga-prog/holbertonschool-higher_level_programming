@@ -1,6 +1,8 @@
 #!/usr/bin/python3
 
+
 """ un rectangle """
+
 
 class Rectangle:
 
@@ -111,7 +113,7 @@ class Rectangle:
         """
         if self._width == 0 or self._height == 0:
             return ""
-        return "\n".join([ "#" * self._width ] * self._height)
+        return "\n".join(["#" * self._width] * self._height)
 
     def __repr__(self):
         """
