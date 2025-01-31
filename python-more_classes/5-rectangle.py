@@ -1,16 +1,19 @@
 #!/usr/bin/python3
 
-""" Ce module traite d'un Rectangle 
+""" Ce module traite d'un Rectangle
 le long de cette classe ,nous utiliserons quelque fonctionnalité\
         afin de manipuler notre rectangle
 """
+
 
 class Rectangle:
 
     """
     Classe représentant un rectangle avec des attributs privés width et height.
-    Permet de calculer l'aire et le périmètre du rectangle, ainsi que d'afficher
-    une représentation visuelle du rectangle. Lors de la suppression d'une instance,
+    Permet de calculer l'aire et le périmètre du rectangle, ainsi que\
+            d'afficher
+    une représentation visuelle du rectangle. Lors de la suppression\
+            d'une instance,
     un message de confirmation est affiché.
     """
 
@@ -38,7 +41,8 @@ class Rectangle:
     @width.setter
     def width(self, value):
         """
-        Définit la largeur du rectangle. Vérifie que la valeur est un entier et est >= 0.
+        Définit la largeur du rectangle. Vérifie que la valeur\
+                est un entier et est >= 0.
 
         Args:
             value (int): La valeur de la largeur à définir.
@@ -66,7 +70,8 @@ class Rectangle:
     @height.setter
     def height(self, value):
         """
-        Définit la hauteur du rectangle. Vérifie que la valeur est un entier et est >= 0.
+        Définit la hauteur du rectangle. Vérifie que la valeur\
+                est un entier et est >= 0.
 
         Args:
             value (int): La valeur de la hauteur à définir.
