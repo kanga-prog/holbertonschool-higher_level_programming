@@ -115,4 +115,4 @@ class Rectangle:
         Returns:
             str: A string representing the object with its memory address.
         """
-        return f"<{self.__class__.__name__} object at {hex(id(self))}>"
+        return (f"<{self.__class__.__name__} object at {hex(id(self))}>")
