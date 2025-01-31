@@ -1,21 +1,26 @@
 #!/usr/bin/python3
 
-""" 
-ce module traite d'un rectangle que nous \
-        allons manipuler avec certains fonctions en python 
 """
+ce module traite d'un rectangle que nous \
+allons manipuler avec certains fonctions en python
+"""
+
 
 class Rectangle:
 
     """
-    Classe représentant un rectangle avec des attributs privés width et height.
-    Permet de calculer l'aire et le périmètre du rectangle, ainsi que d'afficher
-    une représentation visuelle du rectangle avec un symbole personnalisable.
-    Lors de la suppression d'une instance, un message de confirmation est affiché.
+    Classe représentant un rectangle avec des attributs\
+            privés width et height.
+    Permet de calculer l'aire et le périmètre du rectangle,\
+            ainsi que d'afficher
+    une représentation visuelle du rectangle avec un symbole\
+            personnalisable.
+    Lors de la suppression d'une instance, un message de\
+            confirmation est affiché.
     """
 
-    number_of_instances = 0  # Attribut de classe pour suivre le nombre d'instances
-    print_symbol = "#"  # Symbole par défaut utilisé pour la représentation du rectangle
+    number_of_instances = 0
+    print_symbol = "#"
 
     def __init__(self, width=0, height=0):
         """
@@ -27,7 +32,7 @@ class Rectangle:
         """
         self.width = width
         self.height = height
-        Rectangle.number_of_instances += 1  # Incrémenter le nombre d'instances
+        Rectangle.number_of_instances += 1
 
     @property
     def width(self):
@@ -42,7 +47,8 @@ class Rectangle:
     @width.setter
     def width(self, value):
         """
-        Définit la largeur du rectangle. Vérifie que la valeur est un entier et est >= 0.
+        Définit la largeur du rectangle. Vérifie que\
+                la valeur est un entier et est >= 0.
 
         Args:
             value (int): La valeur de la largeur à définir.
@@ -70,7 +76,8 @@ class Rectangle:
     @height.setter
     def height(self, value):
         """
-        Définit la hauteur du rectangle. Vérifie que la valeur est un entier et est >= 0.
+        Définit la hauteur du rectangle. Vérifie que la\
+                valeur est un entier et est >= 0.
 
         Args:
             value (int): La valeur de la hauteur à définir.
@@ -137,7 +144,7 @@ class Rectangle:
         Returns:
             None
         """
-        Rectangle.number_of_instances -= 1  # Décrémenter le nombre d'instances
+        Rectangle.number_of_instances -= 1
         print("Bye rectangle...")
 
     @staticmethod
@@ -152,9 +159,9 @@ class Rectangle:
 
         Returns:
             Rectangle: Le rectangle ayant l'aire la plus grande ou égale.
-        
         Raises:
-            TypeError: Si l'un des arguments n'est pas une instance de Rectangle.
+            TypeError: Si l'un des arguments n'est pas une instance de\
+                    Rectangle.
         """
         if not isinstance(rect_1, Rectangle):
             raise TypeError("rect_1 must be an instance of Rectangle")
