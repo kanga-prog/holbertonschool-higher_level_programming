@@ -1,0 +1,3 @@
+1. Superclasse (classe de base / classe parent)
+Définition : Une superclasse (également appelée classe de base ou classe parent) est une classe dont d'autres classes héritent des propriétés et des méthodes. La superclasse définit des fonctionnalités communes qui peuvent être partagées par ses sous-classes.
+Exemple : Si vous avez une classe Animal, elle pourrait être une super-classe pour des classes d'animaux plus spécifiques comme Dogou Cat.
