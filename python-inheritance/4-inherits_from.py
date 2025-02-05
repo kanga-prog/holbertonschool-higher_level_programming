@@ -1,6 +1,6 @@
 #!/usr/bin/python3
-""""
-ce module traitre de l'apartenance d'un objet a une class ou une sous class
+"""
+Module de verification d'appartenance d'objet a class ou sous class.
 
 """
 
@@ -18,4 +18,4 @@ def inherits_from(obj, a_class):
         bool: True if the object's class is a subclass of a_class, and not
               the class itself; otherwise, False.
     """
-    return issubclass(type(obj), a_class) and not isinstance(obj, a_class)
+    return isinstance(obj, a_class) and type(obj) is not a_class
