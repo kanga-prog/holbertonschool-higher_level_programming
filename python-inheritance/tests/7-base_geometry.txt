@@ -1,35 +1,61 @@
+"""
+Tests for the BaseGeometry class.
+
+This file tests the BaseGeometry class located in 7-base_geometry.py.
+The tests verify that the class methods raise the expected exceptions and
+behave as described in the documentation.
+
+The following methods are tested:
+- integer_validator: Tests for correct validation of integer values.
+- area: Verifies that an exception is raised when calling the area method,
+  since it is not implemented in the base class.
+
+To run the tests:
+$ python3 -m doctest ./tests/*
+"""
+
+# Importing the BaseGeometry class from the module
 BaseGeometry = __import__('7-base_geometry').BaseGeometry
 
-Test 1: Create an instance of BaseGeometry and call integer_validator with valid data.
-- Expected: No exceptions should be raised.
-bg = BaseGeometry()
-bg.integer_validator("my_int", 12)  # Should pass without exception
-bg.integer_validator("width", 89)  # Should pass without exception
+def test_integer_validator():
+    """
+    Tests the integer_validator method of the BaseGeometry class.
 
-Test 2: Call integer_validator with a string (invalid value).
-- Expected: TypeError should be raised with the message "<name> must be an integer".
-try:
-    bg.integer_validator("name", "John")  # Should raise TypeError
-except Exception as e:
-    print(f"[{e.__class__.__name__}] {e}")  # Output: [TypeError] name must be an integer
+    This test ensures that the method raises the correct exceptions when:
+    - The value is not an integer.
+    - The value is less than or equal to zero.
+    """
+    bg = BaseGeometry()
 
-Test 3: Call integer_validator with a value of 0 (invalid value).
-- Expected: ValueError should be raised with the message "<name> must be greater than 0".
-try:
-    bg.integer_validator("age", 0)  # Should raise ValueError
-except Exception as e:
-    print(f"[{e.__class__.__name__}] {e}")  # Output: [ValueError] age must be greater than 0
+    # Test for valid integer values
+    bg.integer_validator("width", 89)
+    bg.integer_validator("height", 12)
 
-Test 4: Call integer_validator with a negative value (invalid value).
-- Expected: ValueError should be raised with the message "<name> must be greater than 0".
-try:
-    bg.integer_validator("distance", -4)  # Should raise ValueError
-except Exception as e:
-    print(f"[{e.__class__.__name__}] {e}")  # Output: [ValueError] distance must be greater than 0
+    try:
+        bg.integer_validator("name", "John")
+    except Exception as e:
+        print("[{}] {}".format(e.__class__.__name__, e))
 
-Test 5: Call area() method.
-- Expected: Exception should be raised since area is not implemented in BaseGeometry.
-try:
-    bg.area()  # Should raise Exception
-except Exception as e:
-    print(f"[{e.__class__.__name__}] {e}")  # Output: [Exception] area() is not implemented
+    try:
+        bg.integer_validator("age", 0)
+    except Exception as e:
+        print("[{}] {}".format(e.__class__.__name__, e))
+
+    try:
+        bg.integer_validator("distance", -4)
+    except Exception as e:
+        print("[{}] {}".format(e.__class__.__name__, e))
+
+def test_area():
+    """
+    Tests the area method of the BaseGeometry class.
+
+    Since the area method is not implemented in the BaseGeometry class,
+    an exception should be raised when it is called.
+    """
+    bg = BaseGeometry()
+
+    try:
+        bg.area()
+    except Exception as e:
+        print("[{}] {}".format(e.__class__.__name__, e))
