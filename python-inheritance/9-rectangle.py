@@ -1,10 +1,5 @@
 #!/usr/bin/python3
 
-"""
-Ce module represente un rectangle representing basic geometry.
-"""
-
-
 class BaseGeometry:
     """
     A class representing basic geometry.
@@ -35,8 +30,7 @@ class BaseGeometry:
         Raises:
             TypeError: If `value` is not an integer.
             ValueError: If `value` is less than or equal to 0.
-        The method checks if the value is an integer and\
-              if it is greater than 0.
+        The method checks if the value is an integer and if it is greater than 0.
         """
         if type(value) is not int:
             raise TypeError(f"{name} must be an integer")
@@ -47,11 +41,21 @@ class BaseGeometry:
 class Rectangle(BaseGeometry):
     """
     A class representing a rectangle, inheriting from BaseGeometry.
-    It validates the width and height of the rectangle.
+    It validates the width and height of the rectangle and implements the area() method.
     """
     def __init__(self, width, height):
+        # Validate width and height using the integer_validator method from BaseGeometry
         self.integer_validator("width", width)
         self.integer_validator("height", height)
-        # Private attributes
+        
+        # Set private attributes for width and height
         self.__width = width
         self.__height = height
+
+    def area(self):
+        # Implement the area() method: area = width * height
+        return self.__width * self.__height
+
+    def __str__(self):
+        # Return a string representation of the rectangle in the required format
+        return f"[Rectangle] {self.__width}/{self.__height}"
