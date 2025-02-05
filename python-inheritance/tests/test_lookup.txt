@@ -1,4 +1,4 @@
->>> lookup = __import__('0-lookup').lookup
+>>> from 0-lookup import lookup
 >>> class MyClass1:
 ...     pass
 >>> class MyClass2:
