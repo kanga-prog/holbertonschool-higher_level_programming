@@ -1,7 +1,8 @@
 #!/usr/bin/python3
 """
-Module
-
+This file tests the BaseGeometry class located in 7-base_geometry.py.
+The tests verify that the class methods raise the expected exceptions and
+behave as described in the documentation.
 """
 
 
