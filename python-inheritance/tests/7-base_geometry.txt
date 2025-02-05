@@ -1,61 +1,38 @@
+>>> BaseGeometry = __import__('7-base_geometry').BaseGeometry
+
 """
-Tests for the BaseGeometry class.
+Module 7-base_geometry
 
-This file tests the BaseGeometry class located in 7-base_geometry.py.
-The tests verify that the class methods raise the expected exceptions and
-behave as described in the documentation.
+This module defines a class BaseGeometry which serves as a base class for 
+geometric shapes. The class includes methods for validating integer values 
+and raises exceptions in case of incorrect input.
 
-The following methods are tested:
-- integer_validator: Tests for correct validation of integer values.
-- area: Verifies that an exception is raised when calling the area method,
-  since it is not implemented in the base class.
+Public Methods:
+---------------
+- area(self): Raises an Exception indicating that the method is not implemented 
+  in the base class. This method is expected to be overridden in subclasses 
+  that represent specific geometric shapes.
+  
+- integer_validator(self, name, value): Validates that the provided value is a 
+  positive integer. If the value is not an integer or is less than or equal to zero, 
+  an appropriate exception is raised with a message indicating the issue.
 
-To run the tests:
-$ python3 -m doctest ./tests/*
+Exceptions Raised:
+------------------
+- TypeError: Raised when the value provided is not an integer.
+- ValueError: Raised when the value is less than or equal to 0.
+
+Usage Example:
+--------------
+>>> bg = BaseGeometry()
+>>> bg.integer_validator("width", 10)  # No exception raised
+>>> bg.integer_validator("length", -5)  # Raises ValueError: length must be greater than 0
+>>> bg.integer_validator("radius", "abc")  # Raises TypeError: radius must be an integer
+>>> bg.area()  # Raises Exception: area() is not implemented
+
+Note:
+-----
+This class is intended to be used as a base class for shapes that require 
+specific implementations of the area method. It is not meant to be used 
+directly for creating geometric objects.
 """
-
-# Importing the BaseGeometry class from the module
-BaseGeometry = __import__('7-base_geometry').BaseGeometry
-
-def test_integer_validator():
-    """
-    Tests the integer_validator method of the BaseGeometry class.
-
-    This test ensures that the method raises the correct exceptions when:
-    - The value is not an integer.
-    - The value is less than or equal to zero.
-    """
-    bg = BaseGeometry()
-
-    # Test for valid integer values
-    bg.integer_validator("width", 89)
-    bg.integer_validator("height", 12)
-
-    try:
-        bg.integer_validator("name", "John")
-    except Exception as e:
-        print("[{}] {}".format(e.__class__.__name__, e))
-
-    try:
-        bg.integer_validator("age", 0)
-    except Exception as e:
-        print("[{}] {}".format(e.__class__.__name__, e))
-
-    try:
-        bg.integer_validator("distance", -4)
-    except Exception as e:
-        print("[{}] {}".format(e.__class__.__name__, e))
-
-def test_area():
-    """
-    Tests the area method of the BaseGeometry class.
-
-    Since the area method is not implemented in the BaseGeometry class,
-    an exception should be raised when it is called.
-    """
-    bg = BaseGeometry()
-
-    try:
-        bg.area()
-    except Exception as e:
-        print("[{}] {}".format(e.__class__.__name__, e))
