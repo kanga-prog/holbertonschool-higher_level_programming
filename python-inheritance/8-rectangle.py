@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-Ce module represente un rectangle 
+Ce module represente un rectangle
 """
 
 
@@ -34,7 +34,8 @@ class BaseGeometry:
         Raises:
             TypeError: If `value` is not an integer.
             ValueError: If `value` is less than or equal to 0.
-        The method checks if the value is an integer and if it is greater than 0.
+        The method checks if the value is an integer and\
+              if it is greater than 0.
         """
         if type(value) is not int:
             raise TypeError(f"{name} must be an integer")
@@ -48,10 +49,8 @@ class Rectangle(BaseGeometry):
     It validates the width and height of the rectangle.
     """
     def __init__(self, width, height):
-        # Validation of the width and height using the integer_validator method from BaseGeometry
         self.integer_validator("width", width)
         self.integer_validator("height", height)
-        
         # Private attributes
         self.__width = width
         self.__height = height
