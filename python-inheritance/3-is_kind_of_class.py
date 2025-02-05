@@ -6,7 +6,6 @@ Ce module traite d'une fonction qui verifie l'existance\
 
 
 def is_kind_of_class(obj, a_class):
-    
     """
     Function to check if an object is an instance of, or if it is an instance
     of a class that inherited from, the specified class.
