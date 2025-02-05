@@ -1,138 +1,57 @@
 #!/usr/bin/python3
-""" This module creates a new class Square
+"""
+Ce module represente un rectangle 
 """
 
 
-class Rectangle:
-    """ Rectangle class
+class BaseGeometry:
     """
+    A class representing basic geometry.
 
-    # variable to count number of instances
-    number_of_instances = 0
-    # variable to represent symbol to print the rectangle
-    print_symbol = "#"
-
-    def __init__(self, width=0, height=0):
-        """Init method
-
-        Keyword Arguments:
-            width [int] -- widht of triangle default: 0
-            height [int] -- height of triangle default: 0
-        """
-        self.width = width
-        self.height = height
-        Rectangle.number_of_instances += 1
-
-    @property
-    def height(self):
-        """Property to height of triangle
-
-        Returns:
-        int --  Private height attribute of triangle
-        """
-        return self.__height
-
-    @property
-    def width(self):
-        """Property to width of triangle
-
-        Returns:
-            Int -- Private width attribute of triangle
-        """
-        return self.__width
-
-    @width.setter
-    def width(self, value):
-        """Function that set the width of triangle
-
-        Arguments:
-            value [int] -- Widht value to be set to triangle
-
-        Raises:
-            TypeError: width must be an integer
-            ValueError: width must be greater or eaual to 0
-        """
-        if type(value) is not int:
-            raise TypeError("width must be an integer")
-        if value < 0:
-            raise ValueError("width must be >= 0")
-        self.__width = value
-
-    @height.setter
-    def height(self, value):
-        """Function that set the height of triangle
-
-        Arguments:
-            value [int] -- Height value to be set to triangle
-
-        Raises:
-            TypeError: height must be an integer
-        """
-        if type(value) is not int:
-            raise TypeError("height must be an integer")
-        if value < 0:
-            raise ValueError("height must be >= 0")
-        self.__height = value
-
+    This class provides methods for validating integers\
+          and raising an exception for the `area()` method,
+          which is not implemented in the base class.
+    """
     def area(self):
-        """Function to calculate the area of a rectangle
-
-        Returns:
-            int -- the area of rectangle
         """
-        return (self.__width * self.__height)
+        Raises an exception indicating that the area method is not implemented.
 
-    def perimeter(self):
-        """Function to calculate the perimeter of a rectangle
-
-        Returns:
-            int -- the perimeter of rectangle
+        This method is meant to be overridden in subclasses, as the calculation
+        of the area depends on the specific geometry.
+        Raises:
+            Exception: Always raises an exception stating\
+                  that the method is not implemented.
         """
-        if self.__height == 0 or self.__width == 0:
-            return 0
-        return 2*(self.__height + self.__width)
+        raise Exception("area() is not implemented")
 
-    def __str__(self):
-        """Function that prints a rectangle
-
-        Returns:
-            String -- The printed rectangle
+    def integer_validator(self, name, value):
         """
-        if self.__width == 0 or self.__height == 0:
-            return ""
-        else:
-            string = ""
-            for _ in range(self.__height):
-                string += str(self.print_symbol) * self.__width
-                if _ < self.__height - 1:
-                    string += "\n"
-        return string
+        Validates that a given value is a positive integer.
 
-    def __repr__(self):
-        """Function repr of rectangle
-
-        Returns:
-            String -- String to representate a object
+        Args:
+            name (str): The name of the variable being validated.
+            value (int): The value to be validated.
+        Raises:
+            TypeError: If `value` is not an integer.
+            ValueError: If `value` is less than or equal to 0.
+        The method checks if the value is an integer and if it is greater than 0.
         """
-        return "Rectangle(" + str(self.__width)+", "+str(self.__height) + ")"
+        if type(value) is not int:
+            raise TypeError(f"{name} must be an integer")
+        if value <= 0:
+            raise ValueError(f"{name} must be greater than 0")
 
-    def __del__(self):
-        """Function that deletes an instance of rectangle and
-            decrement by one (number_of_instances)
-        """
-        Rectangle.number_of_instances -= 1
-        print("Bye rectangle...")
 
-    @staticmethod
-    def bigger_or_equal(rect_1, rect_2):
-        """Statict method to verify the biggest rectangle
-        """
-        if isinstance(rect_1, Rectangle) is False:
-            raise TypeError("rect_1 must be an instance of Rectangle")
-        if isinstance(rect_2, Rectangle) is False:
-            raise TypeError("rect_2 must be an instance of Rectangle")
-
-        if rect_1.area() < rect_2.area():
-            return rect_2
-        else:
-            return rect_1
+class Rectangle(BaseGeometry):
+    """
+    A class representing a rectangle, inheriting from BaseGeometry.
+    It validates the width and height of the rectangle.
+    """
+    def __init__(self, width, height):
+        # Validation of the width and height using the integer_validator method from BaseGeometry
+        self.integer_validator("width", width)
+        self.integer_validator("height", height)
+        
+        # Private attributes
+        self.__width = width
+        self.__height = height
