@@ -1,10 +1,6 @@
 #!/usr/bin/python3
 """
 Module de verification d'appartenance d'objet a class ou sous class.
-
-"""
-
-
 def inherits_from(obj, a_class):
     """
     Function to check if an object is an instance of a class that inherited
