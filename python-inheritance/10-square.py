@@ -5,6 +5,7 @@
 
 Rectangle = __import__('9-rectangle').Rectangle
 
+
 class Square(Rectangle):
     """
     A class that defines a square, inheriting from Rectangle.
