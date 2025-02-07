@@ -19,7 +19,7 @@ class Square(Rectangle):
 
     Methods:
         area(): Returns the area of the square (size * size).
-        __str__(): Returns a string representation of the square in the 
+        __str__(): Returns a string representation of the square in the
                    format '[Square] <size>/<size>'.
     """
 
