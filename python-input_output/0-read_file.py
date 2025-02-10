@@ -1,11 +1,11 @@
-def read_file(filename=""):
+#!/usr/bin/python3
+
+def read_file(filename="my_file_0.txt"):
     """
     Reads a text file (UTF-8) and prints its content to stdout.
 
     Args:
-        filename (str): The path to the file to be read. Defaults to an empty string, 
-                         which will cause the function to try and open a file with 
-                         that name (if provided).
+        filename (str): The path to the file to be read. Defaults to "my_file_0.txt".
     
     The function uses the `with` statement to open the file in read mode, ensuring
     that the file is properly closed after being read. It reads the content of the
@@ -19,4 +19,4 @@ def read_file(filename=""):
         We offer a truly innovative approach to education: focus on building reliable applications...
     """
     with open(filename, "r", encoding="utf-8") as file:
-        print(file.read(), end="")
+        print(file.read())

@@ -1,7 +1,7 @@
 # Python - Input/Output
 
 ## Author
-Guillaume
+kanga kouakou brice
 
 ## Overview
 This project covers the basics of input/output operations in Python, focusing on working with files, JSON serialization/deserialization, and basic Python data structures. You'll learn how to read, write, and append data to files, manage JSON objects, and handle command-line arguments.
