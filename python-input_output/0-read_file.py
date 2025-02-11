@@ -18,5 +18,5 @@ def read_file(filename=""):
         Calling `read_file("my_file_0.txt")` would print:
         We offer a truly innovative approach to education: focus on building reliable applications...
     """
-    with open(filename, "r", encoding="utf-8") as file:
+    with open(filename, encoding="utf-8") as file:
         print(file.read(), end='')  # Lire tout le contenu et afficher sans ajout de ligne supplémentaire
