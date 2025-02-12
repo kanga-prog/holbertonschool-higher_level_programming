@@ -1,16 +1,8 @@
 #!/usr/bin/python3
-
+"""Module containing to_json_string function"""
 import json
 
 
 def to_json_string(my_obj):
-    """
-    Convertit un objet Python en une chaîne de caractères JSON.
-
-    Args:
-        my_obj (object): L'objet Python à convertir en chaîne JSON.
-
-    Returns:
-        str: La représentation JSON de l'objet.
-    """
+    """Function to return JSON representation of an obj"""
     return json.dumps(my_obj)
