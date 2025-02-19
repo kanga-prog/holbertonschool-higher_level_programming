@@ -1,12 +1,12 @@
 ### 1. Differentiating HTTP and HTTPS:
 
-#### **HTTP (Hypertext Transfer Protocol):**
+#### **HTTP (Hypertext Transfer Protocol):
 - **Definition:** HTTP is a protocol used for transferring data over the web. It enables communication between web clients (browsers) and web servers.
 - **Security:** HTTP does not offer any encryption, meaning that data is transmitted in plain text. Anyone who intercepts the communication can read the data.
 - **Port:** HTTP typically operates on port 80.
 - **Use case:** It is used for general web browsing where sensitive information is not exchanged.
 
-#### **HTTPS (Hypertext Transfer Protocol Secure):**
+#### **HTTPS (Hypertext Transfer Protocol Secure):
 - **Definition:** HTTPS is the secure version of HTTP. It adds a layer of security using SSL/TLS encryption to protect data.
 - **Security:** HTTPS encrypts the data sent between the client and the server, ensuring that it cannot be read or modified by third parties.
 - **Port:** HTTPS operates on port 443.
