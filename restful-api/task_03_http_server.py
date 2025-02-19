@@ -1,57 +1,45 @@
 #!/usr/bin/python3
 
+import http.server
 import json
-from http.server import BaseHTTPRequestHandler, HTTPServer
 
-class SimpleHTTPRequestHandler(BaseHTTPRequestHandler):
+class SimpleHTTPRequestHandler(http.server.BaseHTTPRequestHandler):
 
     def do_GET(self):
-        # Handle the /data endpoint
-        if self.path == '/data':
-            # JSON response
-            response_data = {
+        if self.path == "/":
+            self.send_response(200)
+            self.send_header("Content-type", "text/plain")
+            self.end_headers()
+            self.wfile.write(b"Hello, this is a simple API!")
+        
+        elif self.path == "/data":
+            data = {
                 "name": "John",
                 "age": 30,
                 "city": "New York"
             }
-            self.send_response(200)  # OK
-            self.send_header('Content-type', 'application/json')
+            self.send_response(200)
+            self.send_header("Content-type", "application/json")
             self.end_headers()
-            self.wfile.write(json.dumps(response_data).encode())
-
-        # Handle the /status endpoint
-        elif self.path == '/status':
-            # Text response for status
-            self.send_response(200)  # OK
-            self.send_header('Content-type', 'text/plain')
+            self.wfile.write(json.dumps(data).encode())
+        
+        elif self.path == "/status":
+            self.send_response(200)
+            self.send_header("Content-type", "text/plain")
             self.end_headers()
             self.wfile.write(b"OK")
-
-        # Handle the /info endpoint
-        elif self.path == '/info':
-            # JSON response for version and description
-            response_data = {
-                "version": "1.0",
-                "description": "A simple API built with http.server"
-            }
-            self.send_response(200)  # OK
-            self.send_header('Content-type', 'application/json')
-            self.end_headers()
-            self.wfile.write(json.dumps(response_data).encode())
-
-        # Handle undefined endpoints
+        
         else:
-            self.send_response(404)  # Not Found
-            self.send_header('Content-type', 'text/plain')
+            self.send_response(404)
+            self.send_header("Content-type", "text/plain")
             self.end_headers()
             self.wfile.write(b"Endpoint not found")
 
-def run(server_class=HTTPServer, handler_class=SimpleHTTPRequestHandler, port=8000):
-    # Set up and start the server
-    server_address = ('', port)
+def run(server_class=http.server.HTTPServer, handler_class=SimpleHTTPRequestHandler):
+    server_address = ('', 8000)
     httpd = server_class(server_address, handler_class)
-    print(f'Starting server on port {port}...')
+    print("Starting server on http://localhost:8000")
     httpd.serve_forever()
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     run()
