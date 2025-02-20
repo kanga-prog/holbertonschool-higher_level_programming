@@ -1,23 +1,13 @@
+#!/usr/bin/python3
+
 from flask import Flask, jsonify, request
+import json
 
 
 app = Flask(__name__)
 
 # In-memory storage for users
-users = {
-    "jane": {
-        "username": "jane",
-        "name": "Jane",
-        "age": 28,
-        "city": "Los Angeles"
-    },
-    "john": {
-        "username": "john",
-        "name": "John",
-        "age": 30,
-        "city": "New York"
-    }
-}
+users = {}
 
 
 # Route for the root URL
@@ -43,7 +33,9 @@ def status():
 def get_user(username):
     user = users.get(username)
     if user:
-        return jsonify(user)
+        return app.response_class(
+            json.dumps(user, indent=4, sort_keys=False),
+            content_type='application/json')
     else:
         return jsonify({"error": "User not found"}), 404
 
@@ -70,4 +62,4 @@ def add_user():
 
 # Run the Flask development server
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run()
