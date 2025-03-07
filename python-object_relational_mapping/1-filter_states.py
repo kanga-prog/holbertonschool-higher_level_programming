@@ -1,31 +1,34 @@
 #!/usr/bin/python3
+
+"""
+Script that connects to a MySQL database and displays all reports
+whose name starts with 'N', sorted by ID.
+"""
 import MySQLdb
 import sys
 
 if __name__ == "__main__":
-    # Get arguments from the command line
+    # Récupérer les arguments de la ligne de commande
     username = sys.argv[1]
     password = sys.argv[2]
     db_name = sys.argv[3]
 
-    # Connect to the MySQL server running on localhost at port 3306
-    db = MySQLdb.connect(host="localhost", port=3306, user=username, passwd=password, db=db_name)
+    # Se connecter au serveur MySQL en localhost au port 3306
+    db = MySQLdb.connect(
+        host="localhost", port=3306, user=username, passwd=password, db=db_name
+    )
 
-    # Create a cursor object to interact with the database
     cursor = db.cursor()
 
-    # Execute the query to select states that start with 'N' and order them by id
+    # Requête pour récupérer les états dont le nom commence par 'N'
     query = "SELECT * FROM states WHERE name LIKE 'N%' ORDER BY id ASC"
     cursor.execute(query)
 
-    # Fetch all results
+    # Récupérer et afficher les résultats
     results = cursor.fetchall()
-
-    # Print results
     for row in results:
         print(row)
 
-    # Close the cursor and the database connection
+    # Fermer le curseur et la connexion à la base de données
     cursor.close()
     db.close()
-
