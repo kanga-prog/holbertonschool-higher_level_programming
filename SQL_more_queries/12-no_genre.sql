@@ -4,10 +4,7 @@
 
 SELECT tv_shows.title, tv_show_genres.genre_id
 FROM tv_shows
--- Use LEFT JOIN to include all shows, even those without a genre
 LEFT JOIN tv_show_genres ON tv_shows.id = tv_show_genres.tv_show_id
--- Filter to only get shows without a genre (genre_id is NULL)
 WHERE tv_show_genres.genre_id IS NULL
--- Sort by tv_shows.title in ascending order
 ORDER BY tv_shows.title ASC;
 
