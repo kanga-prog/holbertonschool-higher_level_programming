@@ -1,31 +1,61 @@
 #!/usr/bin/python3
-import MySQLdb
-import sys
 
-if __name__ == "__main__":
-    # Get arguments from the command line
+"""
+Script qui liste tous les états dont le nom commence par 'N'
+depuis une base de données MySQL, en utilisant SQLAlchemy.
+"""
+import sys
+from sqlalchemy import create_engine, Column, Integer, String
+from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy.orm import sessionmaker
+
+# Déclaration de la base
+Base = declarative_base()
+
+class State(Base):
+    """
+    Classe mappée à la table 'states' de la base de données.
+    La table 'states' contient des colonnes 'id' et 'name'.
+    """
+    __tablename__ = 'states'
+
+    id = Column(Integer, primary_key=True)
+    name = Column(String(256), nullable=False)
+
+    def __repr__(self):
+        return f"({self.id}, '{self.name}')"
+
+def main():
+    """
+    Fonction principale qui se connecte à la base de données
+    et affiche tous les états dont le nom commence par 'N'.
+    """
+    # Vérification des arguments
+    if len(sys.argv) != 4:
+        return
+
+    # Extraction des arguments de la ligne de commande
     username = sys.argv[1]
     password = sys.argv[2]
     db_name = sys.argv[3]
 
-    # Connect to the MySQL server running on localhost at port 3306
-    db = MySQLdb.connect(host="localhost", port=3306, user=username, passwd=password, db=db_name)
+    # Création de l'URL de connexion
+    engine = create_engine(f'mysql+mysqldb://{username}:{password}@localhost/{db_name}')
+    
+    # Création de la session
+    Session = sessionmaker(bind=engine)
+    session = Session()
 
-    # Create a cursor object to interact with the database
-    cursor = db.cursor()
+    # Requête pour récupérer les états dont le nom commence par 'N'
+    states = session.query(State).filter(State.name.like('N%')).order_by(State.id).all()
 
-    # Execute the query to select states that start with 'N' and order them by id
-    query = "SELECT * FROM states WHERE name LIKE 'N%' ORDER BY id ASC"
-    cursor.execute(query)
+    # Affichage des résultats
+    for state in states:
+        print(state)
 
-    # Fetch all results
-    results = cursor.fetchall()
+    # Fermeture de la session
+    session.close()
 
-    # Print results
-    for row in results:
-        print(row)
-
-    # Close the cursor and the database connection
-    cursor.close()
-    db.close()
+if __name__ == "__main__":
+    main()
 
