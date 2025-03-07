@@ -2,6 +2,10 @@
 import MySQLdb
 import sys
 
+""" 
+lists all states starting with N from the database
+"""
+
 if __name__ == "__main__":
     # Get arguments
     username = sys.argv[1]
