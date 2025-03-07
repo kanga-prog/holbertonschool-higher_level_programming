@@ -1,34 +1,20 @@
 #!/usr/bin/python3
-"""
-Write a script that takes in an argument and
-displays all values in the states table of hbtn_0e_0_usa
-where name matches the argument.
-"""
-import sys
+# Script that filters states by user input from the MySQL database
 import MySQLdb
-
-
-def main():
-    conn = MySQLdb.connect(
-                        host="localhost",
-                        port=3306,
-                        user=sys.argv[1],
-                        passwd=sys.argv[2],
-                        db=sys.argv[3],
-                        charset="utf8"
-                            )
-    cur = conn.cursor()
-    search = sys.argv[4]
-    query = """SELECT * FROM states where name = '{:s}'
-            ORDER by id ASC""".format(search)
-    cur.execute(query)
-    row = cur.fetchall()
-    for r in row:
-        if r[1] == search:
-            print(r)
-    cur.close()
-    conn.close()
-
+import sys
 
 if __name__ == "__main__":
-    main()
+    username = sys.argv[1]
+    password = sys.argv[2]
+    database = sys.argv[3]
+    state_name = sys.argv[4]
+    db = MySQLdb.connect(host="localhost", port=3306,
+                         user=username, passwd=password, db=database)
+    cursor = db.cursor()
+    query = "SELECT id, name FROM states WHERE name = %s ORDER BY id ASC"
+    cursor.execute(query, (state_name,))
+    results = cursor.fetchall()
+    for row in results:
+        print(row)
+    cursor.close()
+    db.close()
