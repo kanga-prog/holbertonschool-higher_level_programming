@@ -17,7 +17,8 @@ def main():
     and display cities with their corresponding state names.
     """
     if len(sys.argv) != 4:
-        print("Usage: ./4-cities_by_state.py <mysql username> <mysql password> <database name>")
+        print("Usage: ./4-cities_by_state.py <mysql username> \
+              <mysql password> <database name>")
         sys.exit(1)
 
     # Get the arguments from the command line
@@ -59,4 +60,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
