@@ -11,7 +11,7 @@ import sys
 
 if __name__ == "__main__":
     """
-    Main function to connect to MySQL, execute the query and list states
+    Main function to connect to MySQL, execute the query, and list states
     starting with 'N' ordered by their id.
     """
     # Get the arguments from the command line
@@ -31,15 +31,12 @@ if __name__ == "__main__":
     # Create a cursor to execute queries
     cursor = db.cursor()
 
-    # Execute the query to get states starting with 'N'
-    cursor.execute("SELECT * FROM states WHERE name LIKE 'N%' ORDER BY id ASC")
+    # Execute the query to get all states sorted by id
+    cursor.execute("SELECT * FROM states ORDER BY id ASC")
 
-    # Fetch all rows from the executed query
-    states = cursor.fetchall()
-
-    # Print each state
-    for state in states:
-        print(state)
+    # Fetch all rows from the executed query and print only those\
+    #  with name starting with 'N'
+    [print(state) for state in cursor.fetchall() if state[1][0] == "N"]
 
     # Close the cursor and the database connection
     cursor.close()
