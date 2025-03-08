@@ -31,7 +31,7 @@ def main():
         host="localhost",
         port=3306,
         user=username,
-        passwd='KKb',
+        passwd=password,
         db=database,
         charset="utf8"
     )
