@@ -14,7 +14,6 @@ if __name__ == "__main__":
     Main function to connect to MySQL, execute the query and list states
     starting with 'N' ordered by their id.
     """
-    
     # Get the arguments from the command line
     username = sys.argv[1]
     password = sys.argv[2]
