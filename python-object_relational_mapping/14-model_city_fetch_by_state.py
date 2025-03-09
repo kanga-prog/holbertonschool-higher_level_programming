@@ -1,32 +1,39 @@
 #!/usr/bin/python3
-"""Affiche toutes les villes de la base de données avec leur état"""
+"""List all City objects from the database hbtn_0e_14_usa"""
 
-from sys import argv
+import sys
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
-from model_state import State
-from model_city import City
-from model_state import Base
+from model_state import State, Base
+from model_city import City  # N'oubliez pas d'importer la classe City !
 
 if __name__ == "__main__":
-    # Connexion à la base de données MySQL
+
+    # Vérification du nombre d'arguments
+    if len(sys.argv) != 4:
+        exit(1)
+
+    # Connexion à la base de données
+    username = sys.argv[1]
+    password = sys.argv[2]
+    db_name = sys.argv[3]
+
     engine = create_engine(
-        f"mysql+mysqldb://{argv[1]}:{argv[2]}@localhost:3306/{argv[3]}"
+        'mysql+mysqldb://{}:{}@localhost/{}'
+        .format(username, password, db_name),
+        pool_pre_ping=True
     )
 
+    # Création de la session
     Session = sessionmaker(bind=engine)
     session = Session()
 
-    # Requête pour récupérer les villes avec leur état correspondant
-    results = (
-        session.query(State.name, City.id, City.name)
-        .join(City)
-        .order_by(City.id)
-        .all()
-    )
+    # Interroger les villes et les états associés
+    cities = session.query(City, State).join(State).order_by(City.id).all()
 
     # Affichage des résultats
-    for state_name, city_id, city_name in results:
-        print(f"{state_name}: ({city_id}) {city_name}")
+    for city, state in cities:
+        print(f"{state.name}: ({city.id}) {city.name}")
 
+    # Fermeture de la session
     session.close()
