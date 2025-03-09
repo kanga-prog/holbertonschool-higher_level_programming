@@ -13,7 +13,8 @@ import sys
 if __name__ == "__main__":
     # Ensure we get the arguments: mysql username, password, and db name
     if len(sys.argv) != 4:
-        print("Usage: ./12-model_state_update_id_2.py <mysql_username> <mysql_password> <database_name>")
+        print("Usage: ./12-model_state_update_id_2.py \
+              <mysql_username> <mysql_password> <database_name>")
         sys.exit(1)
 
     mysql_username = sys.argv[1]
@@ -21,7 +22,12 @@ if __name__ == "__main__":
     database_name = sys.argv[3]
 
     # Create the engine to connect to the database
-    engine = create_engine(f"mysql+mysqldb://{mysql_username}:{mysql_password}@localhost:3306/{database_name}", pool_pre_ping=True)
+    engine = create_engine(
+        "mysql+mysqldb://{}:{}@localhost:3306/{}".format(
+            mysql_username, mysql_password, database_name
+        ),
+        pool_pre_ping=True,
+    )
 
     # Create a session to interact with the database
     Session = sessionmaker(bind=engine)
@@ -41,4 +47,3 @@ if __name__ == "__main__":
 
     # Close the session
     session.close()
-
