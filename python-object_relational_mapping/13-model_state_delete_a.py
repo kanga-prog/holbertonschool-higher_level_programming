@@ -31,8 +31,10 @@ if __name__ == "__main__":
     # Create a session to interact with the database
     Session = sessionmaker(bind=engine)
     session = Session()
+
     # Query for all states where the name contains the letter 'a'
-    states_to_delete = session.query(State).filter(State.name.like('%a%')).all()
+    states_to_delete = session.query(State).\
+        filter(State.name.like('%a%')).all()
 
     # Delete the states found
     for state in states_to_delete:
